@@ -1,0 +1,20 @@
+{
+    "dev": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-beerservice-dev-201355-authRole",
+            "UnauthRoleArn": "***REMOVED***",
+            "AuthRoleArn": "***REMOVED***",
+            "Region": "us-east-1",
+            "DeploymentBucketName": "amplify-beerservice-dev-201355-deployment",
+            "UnauthRoleName": "amplify-beerservice-dev-201355-unauthRole",
+            "StackName": "amplify-beerservice-dev-201355",
+            "StackId": "***REMOVED***",
+            "AmplifyAppId": "***REMOVED***"
+        },
+        "categories": {
+            "auth": {
+                "beerservicea1ff245b": {}
+            }
+        }
+    }
+}

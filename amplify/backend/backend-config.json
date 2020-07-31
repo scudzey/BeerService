@@ -1,0 +1,10 @@
+{
+	"auth": {
+		"beerservicea1ff245b": {
+			"service": "Cognito",
+			"providerPlugin": "awscloudformation",
+			"dependsOn": [],
+			"customAuth": false
+		}
+	}
+}
