@@ -15,7 +15,6 @@ class Taps extends React.Component {
     componentDidMount() {
         Auth.currentCredentials().then((info) => {
             const cognitoIdentityId = info.identityId;
-            console.log("cognitoId: ", cognitoIdentityId)
           });
         var tapUpdate = this.tapUpdate.bind(this)
         Auth.currentCredentials().then((info) => {
@@ -25,7 +24,6 @@ class Taps extends React.Component {
                 "clientId": cognitoIdentityId
               }
             }).then( () => {
-              console.log("updated user principle")
               IOTSubscribeToMultipleTopics(['tapSensor/#'], tapUpdate)
             }).catch(error => {
               console.log("Error: ", error)
