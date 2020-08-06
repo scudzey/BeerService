@@ -1,15 +1,40 @@
 import React, {Fragment} from 'react';
-import Amplify, { API, Auth } from 'aws-amplify';
+import Amplify, { API, Auth, PubSub } from 'aws-amplify';
+import { IOTSubscribeToMultipleTopics } from './iot-util.js';
 
 class Taps extends React.Component {
     
     constructor(props) {
         super(props)
         this.state = { loading: true, title: null}
+
+        
         
     }
 
     componentDidMount() {
+        Auth.currentCredentials().then((info) => {
+            const cognitoIdentityId = info.identityId;
+            console.log("cognitoId: ", cognitoIdentityId)
+          });
+        var tapUpdate = this.tapUpdate.bind(this)
+        Auth.currentCredentials().then((info) => {
+            const cognitoIdentityId = info.identityId;
+            API.get('test2', '/test2/updateconfig', {
+              headers: { 
+                "clientId": cognitoIdentityId
+              }
+            }).then( () => {
+              console.log("updated user principle")
+              IOTSubscribeToMultipleTopics(['tapSensor/#'], tapUpdate)
+            }).catch(error => {
+              console.log("Error: ", error)
+            })
+          })
+        this.getTaps()
+    }
+
+    tapUpdate() {
         this.getTaps()
     }
 
@@ -21,7 +46,7 @@ class Taps extends React.Component {
         }
     }
 
-    getTaps() {
+    getTaps = () => {
         API.get('test2', '/test2/taps', {})
             .then( response => this.setState({ loading: false, data: response}))
     }
@@ -60,7 +85,6 @@ class Taps extends React.Component {
                 <h2>
                     Beer list
                 </h2>
-                {this.getJwtToken()}
                 {loading ? "Loading..." : this.renderList(data)}
             </Fragment>
         );
