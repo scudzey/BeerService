@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Scudzey's Beer Service",
+  "name": "Scudzey's Live Beer Status",
   "icons": [
     {
       "src": "favicon.ico",
