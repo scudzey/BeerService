@@ -3,7 +3,7 @@ This is the web interface for an IoT beer monitoring service.  After authenticat
 
 
 ## Firmware repostitory
-When available the firmware repository will be linked here.
+[BeerSerivce.Device](https://github.com/scudzey/BeerService.Device)
 
 ## Architecture
 
