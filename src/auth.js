@@ -6,7 +6,7 @@ export const setupAPI = () => {
           endpoints: [
             {
               name: "test2",
-              endpoint: "https://${process.env.AWS_REST_ENDPOINT_ID}.execute-api.${process.env.AWS_APP_REGION}.amazonaws.com",
+              endpoint: `https://${process.env.AWS_REST_ENDPOINT_ID}.execute-api.${process.env.AWS_APP_REGION}.amazonaws.com`,
               custom_header: async () => {
                return { Authorization: `Bearer ${(await Auth.currentSession()).getIdToken().getJwtToken()}` }
               }
