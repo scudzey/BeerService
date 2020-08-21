@@ -8,7 +8,7 @@ export const attachIoTPolicy = () => (
         .then((credentials) => {
           Amplify.addPluggable(new AWSIoTProvider({
             aws_pubsub_region: 'us-east-1',
-            aws_pubsub_endpoint: `wss://${process.env.AWS_IOT_MQTT_ID}.iot.${process.env.AWS_APP_REGION}.amazonaws.com/mqtt`,
+            aws_pubsub_endpoint: `wss://${process.env.REACT_APP_AWS_IOT_MQTT_ID}.iot.${process.env.REACT_APP_AWS_REGION}.amazonaws.com/mqtt`,
             credentials,
           }))
           resolve()
