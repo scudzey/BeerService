@@ -1,0 +1,61 @@
+type beerTap
+  @model 
+  @auth(rules: [{ allow: owner, operations: [create, delete, update]}])
+  @key(name: "byTap", fields:["beerNode", "name"])
+{
+  id: ID!
+  beerNode: ID!
+  name: String!
+  maxCapacity: Int
+  currentCapacity: Int
+  ticksPerLiter: Int
+  node: beerNode @connection(fields: ["beerNode"])
+}
+
+type beerNode
+  @model
+  @auth(rules: [{ allow: owner, operations: [create, delete, update] }])
+{
+  id: ID!
+  taps: [beerTap] @connection(keyName:"byTap", fields:["id"])
+  deviceId: String!
+  deviceCommonName: String!
+}
+
+type beerDefinition
+  @model
+  @auth(rules: [{ allow: owner, operations: [create, delete, update] }])
+{
+  id: ID!
+  title: String
+  description: String
+  imageURL: String
+  style: String
+  brewer: String
+  website: String
+  abv: Int
+  ibu: Int
+}
+
+type beerCategory
+  @model
+{
+  id: ID!
+  style: String!
+}
+
+type beerBrewer
+  @model
+{
+  id: ID!
+  brewer: String!
+}
+
+type beerDrinker
+  @model
+  @auth(rules: [{ allow: owner, operations: [create, delete, update] }])
+{
+  id: ID!
+  username: String!
+  beersConsumed: [beerDefinition]
+} 
