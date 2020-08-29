@@ -1,5 +1,4 @@
 import Amplify, { Auth } from 'aws-amplify';
-import API from '@aws-amplify/api';
 
 export const setupAPI = () => { 
     Amplify.configure({
