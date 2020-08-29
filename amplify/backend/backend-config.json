@@ -1,10 +1,78 @@
 {
-	"auth": {
-		"beerservicea1ff245b": {
-			"service": "Cognito",
-			"providerPlugin": "awscloudformation",
-			"dependsOn": [],
-			"customAuth": false
-		}
-	}
+    "auth": {
+        "beerservicea1ff245b": {
+            "service": "Cognito",
+            "providerPlugin": "awscloudformation",
+            "dependsOn": [],
+            "customAuth": false
+        },
+        "userPoolGroups": {
+            "service": "Cognito-UserPool-Groups",
+            "providerPlugin": "awscloudformation",
+            "dependsOn": [
+                {
+                    "category": "auth",
+                    "resourceName": "beerservicea1ff245b",
+                    "attributes": [
+                        "UserPoolId",
+                        "AppClientIDWeb",
+                        "AppClientID",
+                        "IdentityPoolId"
+                    ]
+                }
+            ]
+        }
+    },
+    "function": {
+        "AdminQueriesa4066060": {
+            "service": "Lambda",
+            "providerPlugin": "awscloudformation",
+            "build": true,
+            "dependsOn": [
+                {
+                    "category": "auth",
+                    "resourceName": "beerservicea1ff245b",
+                    "attributes": [
+                        "UserPoolId"
+                    ]
+                }
+            ]
+        }
+    },
+    "api": {
+        "AdminQueries": {
+            "service": "API Gateway",
+            "providerPlugin": "awscloudformation",
+            "dependsOn": [
+                {
+                    "category": "auth",
+                    "resourceName": "beerservicea1ff245b",
+                    "attributes": [
+                        "UserPoolId"
+                    ]
+                },
+                {
+                    "category": "function",
+                    "resourceName": "AdminQueriesa4066060",
+                    "attributes": [
+                        "Arn",
+                        "Name"
+                    ]
+                }
+            ]
+        },
+        "beerservice": {
+            "output": {
+                "authConfig": {
+                    "defaultAuthentication": {
+                        "authenticationType": "AMAZON_COGNITO_USER_POOLS",
+                        "userPoolConfig": {
+                            "userPoolId": "authbeerservicea1ff245b"
+                        }
+                    },
+                    "additionalAuthenticationProviders": []
+                }
+            }
+        }
+    }
 }
