@@ -16,13 +16,9 @@ class Taps extends React.Component {
     }
 
     tapUpdate(tapData) {
-        console.log(`updating tap: ${tapData}`)
-        console.log(tapData)
         const tapIndex = this.state.taps.findIndex(element => element.id === tapData.id);
         let newTapArray = [...this.state.taps]
         newTapArray[tapIndex] = {...newTapArray[tapIndex], currentCapacity: tapData.currentCapacity}
-        console.log(`updated array: ${newTapArray}`)
-        console.log(newTapArray)
         this.setState({taps: newTapArray})
     }
 
@@ -41,9 +37,6 @@ class Taps extends React.Component {
     }
 
     renderList = taps => {
-        console.log("result: ")
-        console.log(taps)
-
         return (
             <ul>
                 { taps.map(tap => (
