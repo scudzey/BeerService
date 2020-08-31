@@ -1,19 +1,22 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import { withAuthenticator, AmplifySignOut } from '@aws-amplify/ui-react';
-import Amplify, { Auth, API, PubSub } from 'aws-amplify';
-import { AWSIoTProvider } from '@aws-amplify/pubsub/lib/Providers';
-import Taps from './Taps';
+import Amplify from 'aws-amplify';
+import Nodes from './Nodes';
+import config from './aws-exports';
 import { setupAPI } from './auth';
+
+
 
 function App() {
   setupAPI();
+  Amplify.configure(config)
+
   
   return (
     <div className="App">
       <header className="App-header">  
-        <Taps />
+        <Nodes />
       </header>
       <AmplifySignOut />
     </div>

@@ -1,201 +1,6 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const onCreateBeerTap = /* GraphQL */ `
-  subscription OnCreateBeerTap {
-    onCreateBeerTap {
-      id
-      beerNode
-      name
-      maxCapacity
-      currentCapacity
-      ticksPerLiter
-      node {
-        id
-        taps {
-          nextToken
-        }
-        deviceId
-        deviceCommonName
-        createdAt
-        updatedAt
-      }
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const onUpdateBeerTap = /* GraphQL */ `
-  subscription OnUpdateBeerTap {
-    onUpdateBeerTap {
-      id
-      beerNode
-      name
-      maxCapacity
-      currentCapacity
-      ticksPerLiter
-      node {
-        id
-        taps {
-          nextToken
-        }
-        deviceId
-        deviceCommonName
-        createdAt
-        updatedAt
-      }
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const onDeleteBeerTap = /* GraphQL */ `
-  subscription OnDeleteBeerTap {
-    onDeleteBeerTap {
-      id
-      beerNode
-      name
-      maxCapacity
-      currentCapacity
-      ticksPerLiter
-      node {
-        id
-        taps {
-          nextToken
-        }
-        deviceId
-        deviceCommonName
-        createdAt
-        updatedAt
-      }
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const onCreateBeerNode = /* GraphQL */ `
-  subscription OnCreateBeerNode {
-    onCreateBeerNode {
-      id
-      taps {
-        items {
-          id
-          beerNode
-          name
-          maxCapacity
-          currentCapacity
-          ticksPerLiter
-          createdAt
-          updatedAt
-        }
-        nextToken
-      }
-      deviceId
-      deviceCommonName
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const onUpdateBeerNode = /* GraphQL */ `
-  subscription OnUpdateBeerNode {
-    onUpdateBeerNode {
-      id
-      taps {
-        items {
-          id
-          beerNode
-          name
-          maxCapacity
-          currentCapacity
-          ticksPerLiter
-          createdAt
-          updatedAt
-        }
-        nextToken
-      }
-      deviceId
-      deviceCommonName
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const onDeleteBeerNode = /* GraphQL */ `
-  subscription OnDeleteBeerNode {
-    onDeleteBeerNode {
-      id
-      taps {
-        items {
-          id
-          beerNode
-          name
-          maxCapacity
-          currentCapacity
-          ticksPerLiter
-          createdAt
-          updatedAt
-        }
-        nextToken
-      }
-      deviceId
-      deviceCommonName
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const onCreateBeerDefinition = /* GraphQL */ `
-  subscription OnCreateBeerDefinition {
-    onCreateBeerDefinition {
-      id
-      title
-      description
-      imageURL
-      style
-      brewer
-      website
-      abv
-      ibu
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const onUpdateBeerDefinition = /* GraphQL */ `
-  subscription OnUpdateBeerDefinition {
-    onUpdateBeerDefinition {
-      id
-      title
-      description
-      imageURL
-      style
-      brewer
-      website
-      abv
-      ibu
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const onDeleteBeerDefinition = /* GraphQL */ `
-  subscription OnDeleteBeerDefinition {
-    onDeleteBeerDefinition {
-      id
-      title
-      description
-      imageURL
-      style
-      brewer
-      website
-      abv
-      ibu
-      createdAt
-      updatedAt
-    }
-  }
-`;
 export const onCreateBeerCategory = /* GraphQL */ `
   subscription OnCreateBeerCategory {
     onCreateBeerCategory {
@@ -251,6 +56,201 @@ export const onDeleteBeerBrewer = /* GraphQL */ `
     onDeleteBeerBrewer {
       id
       brewer
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onCreateBeerTap = /* GraphQL */ `
+  subscription OnCreateBeerTap {
+    onCreateBeerTap {
+      id
+      beerNodeID
+      name
+      maxCapacity
+      currentCapacity
+      ticksPerLiter
+      createdAt
+      updatedAt
+      node {
+        id
+        deviceId
+        deviceCommonName
+        createdAt
+        updatedAt
+        taps {
+          nextToken
+        }
+      }
+    }
+  }
+`;
+export const onUpdateBeerTap = /* GraphQL */ `
+  subscription OnUpdateBeerTap {
+    onUpdateBeerTap {
+      id
+      beerNodeID
+      name
+      maxCapacity
+      currentCapacity
+      ticksPerLiter
+      createdAt
+      updatedAt
+      node {
+        id
+        deviceId
+        deviceCommonName
+        createdAt
+        updatedAt
+        taps {
+          nextToken
+        }
+      }
+    }
+  }
+`;
+export const onDeleteBeerTap = /* GraphQL */ `
+  subscription OnDeleteBeerTap {
+    onDeleteBeerTap {
+      id
+      beerNodeID
+      name
+      maxCapacity
+      currentCapacity
+      ticksPerLiter
+      createdAt
+      updatedAt
+      node {
+        id
+        deviceId
+        deviceCommonName
+        createdAt
+        updatedAt
+        taps {
+          nextToken
+        }
+      }
+    }
+  }
+`;
+export const onCreateBeerNode = /* GraphQL */ `
+  subscription OnCreateBeerNode {
+    onCreateBeerNode {
+      id
+      deviceId
+      deviceCommonName
+      createdAt
+      updatedAt
+      taps {
+        items {
+          id
+          beerNodeID
+          name
+          maxCapacity
+          currentCapacity
+          ticksPerLiter
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+    }
+  }
+`;
+export const onUpdateBeerNode = /* GraphQL */ `
+  subscription OnUpdateBeerNode {
+    onUpdateBeerNode {
+      id
+      deviceId
+      deviceCommonName
+      createdAt
+      updatedAt
+      taps {
+        items {
+          id
+          beerNodeID
+          name
+          maxCapacity
+          currentCapacity
+          ticksPerLiter
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+    }
+  }
+`;
+export const onDeleteBeerNode = /* GraphQL */ `
+  subscription OnDeleteBeerNode {
+    onDeleteBeerNode {
+      id
+      deviceId
+      deviceCommonName
+      createdAt
+      updatedAt
+      taps {
+        items {
+          id
+          beerNodeID
+          name
+          maxCapacity
+          currentCapacity
+          ticksPerLiter
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+    }
+  }
+`;
+export const onCreateBeerDefinition = /* GraphQL */ `
+  subscription OnCreateBeerDefinition {
+    onCreateBeerDefinition {
+      id
+      title
+      description
+      imageURL
+      style
+      brewer
+      website
+      abv
+      ibu
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onUpdateBeerDefinition = /* GraphQL */ `
+  subscription OnUpdateBeerDefinition {
+    onUpdateBeerDefinition {
+      id
+      title
+      description
+      imageURL
+      style
+      brewer
+      website
+      abv
+      ibu
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onDeleteBeerDefinition = /* GraphQL */ `
+  subscription OnDeleteBeerDefinition {
+    onDeleteBeerDefinition {
+      id
+      title
+      description
+      imageURL
+      style
+      brewer
+      website
+      abv
+      ibu
       createdAt
       updatedAt
     }

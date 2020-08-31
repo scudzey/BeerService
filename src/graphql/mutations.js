@@ -1,228 +1,6 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const createBeerTap = /* GraphQL */ `
-  mutation CreateBeerTap(
-    $input: CreateBeerTapInput!
-    $condition: ModelbeerTapConditionInput
-  ) {
-    createBeerTap(input: $input, condition: $condition) {
-      id
-      beerNode
-      name
-      maxCapacity
-      currentCapacity
-      ticksPerLiter
-      node {
-        id
-        taps {
-          nextToken
-        }
-        deviceId
-        deviceCommonName
-        createdAt
-        updatedAt
-      }
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const updateBeerTap = /* GraphQL */ `
-  mutation UpdateBeerTap(
-    $input: UpdateBeerTapInput!
-    $condition: ModelbeerTapConditionInput
-  ) {
-    updateBeerTap(input: $input, condition: $condition) {
-      id
-      beerNode
-      name
-      maxCapacity
-      currentCapacity
-      ticksPerLiter
-      node {
-        id
-        taps {
-          nextToken
-        }
-        deviceId
-        deviceCommonName
-        createdAt
-        updatedAt
-      }
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const deleteBeerTap = /* GraphQL */ `
-  mutation DeleteBeerTap(
-    $input: DeleteBeerTapInput!
-    $condition: ModelbeerTapConditionInput
-  ) {
-    deleteBeerTap(input: $input, condition: $condition) {
-      id
-      beerNode
-      name
-      maxCapacity
-      currentCapacity
-      ticksPerLiter
-      node {
-        id
-        taps {
-          nextToken
-        }
-        deviceId
-        deviceCommonName
-        createdAt
-        updatedAt
-      }
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const createBeerNode = /* GraphQL */ `
-  mutation CreateBeerNode(
-    $input: CreateBeerNodeInput!
-    $condition: ModelbeerNodeConditionInput
-  ) {
-    createBeerNode(input: $input, condition: $condition) {
-      id
-      taps {
-        items {
-          id
-          beerNode
-          name
-          maxCapacity
-          currentCapacity
-          ticksPerLiter
-          createdAt
-          updatedAt
-        }
-        nextToken
-      }
-      deviceId
-      deviceCommonName
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const updateBeerNode = /* GraphQL */ `
-  mutation UpdateBeerNode(
-    $input: UpdateBeerNodeInput!
-    $condition: ModelbeerNodeConditionInput
-  ) {
-    updateBeerNode(input: $input, condition: $condition) {
-      id
-      taps {
-        items {
-          id
-          beerNode
-          name
-          maxCapacity
-          currentCapacity
-          ticksPerLiter
-          createdAt
-          updatedAt
-        }
-        nextToken
-      }
-      deviceId
-      deviceCommonName
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const deleteBeerNode = /* GraphQL */ `
-  mutation DeleteBeerNode(
-    $input: DeleteBeerNodeInput!
-    $condition: ModelbeerNodeConditionInput
-  ) {
-    deleteBeerNode(input: $input, condition: $condition) {
-      id
-      taps {
-        items {
-          id
-          beerNode
-          name
-          maxCapacity
-          currentCapacity
-          ticksPerLiter
-          createdAt
-          updatedAt
-        }
-        nextToken
-      }
-      deviceId
-      deviceCommonName
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const createBeerDefinition = /* GraphQL */ `
-  mutation CreateBeerDefinition(
-    $input: CreateBeerDefinitionInput!
-    $condition: ModelbeerDefinitionConditionInput
-  ) {
-    createBeerDefinition(input: $input, condition: $condition) {
-      id
-      title
-      description
-      imageURL
-      style
-      brewer
-      website
-      abv
-      ibu
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const updateBeerDefinition = /* GraphQL */ `
-  mutation UpdateBeerDefinition(
-    $input: UpdateBeerDefinitionInput!
-    $condition: ModelbeerDefinitionConditionInput
-  ) {
-    updateBeerDefinition(input: $input, condition: $condition) {
-      id
-      title
-      description
-      imageURL
-      style
-      brewer
-      website
-      abv
-      ibu
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const deleteBeerDefinition = /* GraphQL */ `
-  mutation DeleteBeerDefinition(
-    $input: DeleteBeerDefinitionInput!
-    $condition: ModelbeerDefinitionConditionInput
-  ) {
-    deleteBeerDefinition(input: $input, condition: $condition) {
-      id
-      title
-      description
-      imageURL
-      style
-      brewer
-      website
-      abv
-      ibu
-      createdAt
-      updatedAt
-    }
-  }
-`;
 export const createBeerCategory = /* GraphQL */ `
   mutation CreateBeerCategory(
     $input: CreateBeerCategoryInput!
@@ -296,6 +74,228 @@ export const deleteBeerBrewer = /* GraphQL */ `
     deleteBeerBrewer(input: $input, condition: $condition) {
       id
       brewer
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const createBeerTap = /* GraphQL */ `
+  mutation CreateBeerTap(
+    $input: CreateBeerTapInput!
+    $condition: ModelbeerTapConditionInput
+  ) {
+    createBeerTap(input: $input, condition: $condition) {
+      id
+      beerNodeID
+      name
+      maxCapacity
+      currentCapacity
+      ticksPerLiter
+      createdAt
+      updatedAt
+      node {
+        id
+        deviceId
+        deviceCommonName
+        createdAt
+        updatedAt
+        taps {
+          nextToken
+        }
+      }
+    }
+  }
+`;
+export const updateBeerTap = /* GraphQL */ `
+  mutation UpdateBeerTap(
+    $input: UpdateBeerTapInput!
+    $condition: ModelbeerTapConditionInput
+  ) {
+    updateBeerTap(input: $input, condition: $condition) {
+      id
+      beerNodeID
+      name
+      maxCapacity
+      currentCapacity
+      ticksPerLiter
+      createdAt
+      updatedAt
+      node {
+        id
+        deviceId
+        deviceCommonName
+        createdAt
+        updatedAt
+        taps {
+          nextToken
+        }
+      }
+    }
+  }
+`;
+export const deleteBeerTap = /* GraphQL */ `
+  mutation DeleteBeerTap(
+    $input: DeleteBeerTapInput!
+    $condition: ModelbeerTapConditionInput
+  ) {
+    deleteBeerTap(input: $input, condition: $condition) {
+      id
+      beerNodeID
+      name
+      maxCapacity
+      currentCapacity
+      ticksPerLiter
+      createdAt
+      updatedAt
+      node {
+        id
+        deviceId
+        deviceCommonName
+        createdAt
+        updatedAt
+        taps {
+          nextToken
+        }
+      }
+    }
+  }
+`;
+export const createBeerNode = /* GraphQL */ `
+  mutation CreateBeerNode(
+    $input: CreateBeerNodeInput!
+    $condition: ModelbeerNodeConditionInput
+  ) {
+    createBeerNode(input: $input, condition: $condition) {
+      id
+      deviceId
+      deviceCommonName
+      createdAt
+      updatedAt
+      taps {
+        items {
+          id
+          beerNodeID
+          name
+          maxCapacity
+          currentCapacity
+          ticksPerLiter
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+    }
+  }
+`;
+export const updateBeerNode = /* GraphQL */ `
+  mutation UpdateBeerNode(
+    $input: UpdateBeerNodeInput!
+    $condition: ModelbeerNodeConditionInput
+  ) {
+    updateBeerNode(input: $input, condition: $condition) {
+      id
+      deviceId
+      deviceCommonName
+      createdAt
+      updatedAt
+      taps {
+        items {
+          id
+          beerNodeID
+          name
+          maxCapacity
+          currentCapacity
+          ticksPerLiter
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+    }
+  }
+`;
+export const deleteBeerNode = /* GraphQL */ `
+  mutation DeleteBeerNode(
+    $input: DeleteBeerNodeInput!
+    $condition: ModelbeerNodeConditionInput
+  ) {
+    deleteBeerNode(input: $input, condition: $condition) {
+      id
+      deviceId
+      deviceCommonName
+      createdAt
+      updatedAt
+      taps {
+        items {
+          id
+          beerNodeID
+          name
+          maxCapacity
+          currentCapacity
+          ticksPerLiter
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+    }
+  }
+`;
+export const createBeerDefinition = /* GraphQL */ `
+  mutation CreateBeerDefinition(
+    $input: CreateBeerDefinitionInput!
+    $condition: ModelbeerDefinitionConditionInput
+  ) {
+    createBeerDefinition(input: $input, condition: $condition) {
+      id
+      title
+      description
+      imageURL
+      style
+      brewer
+      website
+      abv
+      ibu
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const updateBeerDefinition = /* GraphQL */ `
+  mutation UpdateBeerDefinition(
+    $input: UpdateBeerDefinitionInput!
+    $condition: ModelbeerDefinitionConditionInput
+  ) {
+    updateBeerDefinition(input: $input, condition: $condition) {
+      id
+      title
+      description
+      imageURL
+      style
+      brewer
+      website
+      abv
+      ibu
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const deleteBeerDefinition = /* GraphQL */ `
+  mutation DeleteBeerDefinition(
+    $input: DeleteBeerDefinitionInput!
+    $condition: ModelbeerDefinitionConditionInput
+  ) {
+    deleteBeerDefinition(input: $input, condition: $condition) {
+      id
+      title
+      description
+      imageURL
+      style
+      brewer
+      website
+      abv
+      ibu
       createdAt
       updatedAt
     }

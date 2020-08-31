@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "api": {
+      "beerservice": [
+        "create",
+        "read",
+        "update",
+        "delete"
+      ]
+    }
+  },
+  "lambdaLayers": []
+}
