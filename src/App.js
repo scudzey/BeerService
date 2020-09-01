@@ -16,7 +16,9 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">  
-        <Nodes />
+        
+      
+      <Nodes />
       </header>
       <AmplifySignOut />
     </div>

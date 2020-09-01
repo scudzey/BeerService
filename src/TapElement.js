@@ -65,6 +65,7 @@ export default function TapElement({taps}) {
     return (
         <React.Fragment>
             <CssBaseline />
+            <div style={{ padding: 20 }}>
             <Grid container spacing={5} alignItems="flex-end">
             { taps.map(tap => (
                 <Grid item key={tap.name} xs={12} md={4}>
@@ -101,6 +102,7 @@ export default function TapElement({taps}) {
                 </Grid>
             ))}
             </Grid>
+            </div>
         </React.Fragment>
     )
 }
