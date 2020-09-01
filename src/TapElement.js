@@ -62,7 +62,6 @@ const renderPercentage = tap => {
 
 export default function TapElement({taps}) {
     const classes = useStyles();
-    console.log(taps)
     return (
         <React.Fragment>
             <CssBaseline />
