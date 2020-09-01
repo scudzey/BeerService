@@ -20,9 +20,13 @@ class Taps extends React.Component {
     }
 
     tapUpdate(tapData) {
+        console.log(tapData)
+        if(!tapData || !tapData.id){
+            return;
+        }
         const tapIndex = this.state.taps.findIndex(element => element.id === tapData.id);
         let newTapArray = [...this.state.taps]
-        newTapArray[tapIndex] = {...newTapArray[tapIndex], currentCapacity: tapData.currentCapacity}
+        newTapArray[tapIndex] = {...newTapArray[tapIndex], ...tapData}
         this.setState({taps: newTapArray})
     }
 
@@ -65,7 +69,11 @@ class Taps extends React.Component {
     subscribeTaps = async () => await API.graphql(
         graphqlOperation(subscriptions.onUpdateBeerTap)
     ).subscribe({
-        next: (tapData) => this.tapUpdate(tapData.value.data.onUpdateBeerTap)
+        next: (tapData) => {
+            console.log("tapData")
+            console.log(tapData)
+            this.tapUpdate(tapData.value.data.onUpdateBeerTap)
+        }
     })
 
 

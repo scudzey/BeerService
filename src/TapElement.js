@@ -1,5 +1,5 @@
 import React, {Fragment} from 'react';
-import { CssBaseline } from "@material-ui/core";
+import { CssBaseline, LinearProgress, Box } from "@material-ui/core";
 import Card from '@material-ui/core/Card'
 import CardContent from '@material-ui/core/CardContent'
 import CardActions from '@material-ui/core/CardActions'
@@ -22,20 +22,27 @@ const useStyles = makeStyles((theme) => ({
       color:"#f1f2f4",
       backgroundColor: "#646e82"
     },
+    imageContainer:{
+        backgroundColor:"#e8e7e3",
+        padding:0, 
+        height: 180, 
+        minWidth:'10%',
+    },
     cardContent: {
-        backgroundColor: "#f1f2f4"
+        backgroundColor: "#e8e7e3",
     },
     cardMedia: {
-        height: 0, 
+        height: 0,
         paddingTop: '56.25%',
-        justifyContent: 'center'
+        justifyContent: 'left'
     },
     cardBeerDescription: {
       display: 'flex',
-      justifyContent: 'center',
+      justifyContent: 'left',
       alignItems: 'baseline',
       marginBottom: theme.spacing(2),
     },
+    
   }));
 
 const getPints = item => {
@@ -46,6 +53,13 @@ const getPints = item => {
 const getPercentage = item => {
     let percentage = ((item.currentCapacity / item.maxCapacity) * 100).toFixed(2)
     return percentage
+}
+
+const renderTitle = tap => {
+    return (
+        `Tap: ${tap.tapIndex + 1} \n
+        `
+    )
 }
 
 const renderSubHeader = tap => {
@@ -60,6 +74,25 @@ const renderPercentage = tap => {
     return `${getPercentage(tap)}%`
 }
 
+const styles = {
+    backGroundBox: {
+        position: 'absolute',
+        backgroundColor: 'black' ,
+        color: 'white',
+        opacity: .5,
+        top: 8, 
+        left: '15%', 
+        transform: 'translateX(-50%)'
+     },
+    overlay: {
+        position: 'absolute',
+        color: 'white',
+        top: 8, 
+        left: 0, 
+        
+     },
+}
+
 export default function TapElement({taps}) {
     const classes = useStyles();
     return (
@@ -69,35 +102,52 @@ export default function TapElement({taps}) {
             <Grid container spacing={5} alignItems="flex-end">
             { taps.map(tap => (
                 <Grid item key={tap.name} xs={12} md={4}>
-                <Card >
-                    <CardHeader
-                        title={tap.currentBeer.title}
-                        subheader={renderSubHeader(tap)}
-                        titleTypographyProps={{align:'center'}}
-                        subheaderTypographyProps={{align:'center'}}
-                        className={classes.cardHeader}
-
-                    >
-                    </CardHeader>
-                    <CardContent className={classes.cardContent}>
-                     
-                      <CardMedia className={classes.cardMedia} image={tap.currentBeer.imageURL} />
-                      
-                      <div className={classes.cardBeerDescription}>
-                          
-                          <ul>
-                            <Typography component="li" variant="h3" color="textPrimary">
-                                {renderPercentage(tap)}
-                            </Typography >
-                            <Typography component="li" variant="h4" color="textPrimary">
-                                {renderPints(tap)}
-                            </Typography >
-                            <Typography component="li" variant="h6" color="textSecondary">
-                                {tap.currentBeer.description}
-                            </Typography >
-                          </ul>
-                      </div>  
+                <Card style={{position:'relative'}} >
+                    <CardContent className={classes.imageContainer}>
+                        <CardMedia className={classes.cardMedia} image={tap.currentBeer.imageURL} />
+                        <div style={styles.overlay}>
+                        <Box display="column" alignItems="center" style={{backgroundColor:"black", opacity:.75, padding:10}}>
+                            <Box style={{backgroundColor:"transparent", opacity:1}}>
+                                <Typography variant="h4" align="left" style={{opacity:1}}>
+                                    {tap.currentBeer.title}
+                                </Typography>
+                            </Box> 
+                            <Box style={{backgroundColor:"transparent", opacity:1, padding:0}}>
+                                <Typography  variant="h6" align="left">
+                                    {renderSubHeader(tap)}
+                                </Typography>
+                            </Box>
+                            
+                        </Box>
+                        
+                            
+                        </div>
                     </CardContent>
+                    <CardContent width="100%" className={classes.cardContent}>
+                        <Box width="100%" display="flex" alignItems="center">
+                            <Box width="100%" mr={1}>
+                            <LinearProgress variant="determinate" value={getPercentage(tap)} />
+                            </Box>
+                            <Box minWidth={35}>
+                                <Typography  variant="body2" color="textPrimary">
+                                    {renderPercentage(tap)}
+                                </Typography>
+                            </Box>
+                        </Box>  
+                    </CardContent>
+                    <CardContent width="100%" className={classes.cardContent}>
+                        <div  className={classes.cardBeerDescription}>                          
+                            <ul style={{display: 'inline-block'}}>
+                                <Typography width="100%" component="li" variant="h4" color="textPrimary" align="left">
+                                    {renderPints(tap)}
+                                </Typography >
+                                <Typography width="100%" component="li" variant="h6" color="textSecondary" align="left">
+                                    {tap.currentBeer.description}
+                                </Typography >
+                            </ul>
+                        </div>  
+                    </CardContent>
+                    
                 </Card>
                 </Grid>
             ))}

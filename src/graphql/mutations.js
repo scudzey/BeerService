@@ -88,6 +88,7 @@ export const createBeerTap = /* GraphQL */ `
       id
       beerNodeID
       name
+      tapIndex
       maxCapacity
       currentCapacity
       ticksPerLiter
@@ -129,6 +130,7 @@ export const updateBeerTap = /* GraphQL */ `
       id
       beerNodeID
       name
+      tapIndex
       maxCapacity
       currentCapacity
       ticksPerLiter
@@ -170,6 +172,7 @@ export const deleteBeerTap = /* GraphQL */ `
       id
       beerNodeID
       name
+      tapIndex
       maxCapacity
       currentCapacity
       ticksPerLiter
@@ -218,6 +221,7 @@ export const createBeerNode = /* GraphQL */ `
           id
           beerNodeID
           name
+          tapIndex
           maxCapacity
           currentCapacity
           ticksPerLiter
@@ -246,6 +250,7 @@ export const updateBeerNode = /* GraphQL */ `
           id
           beerNodeID
           name
+          tapIndex
           maxCapacity
           currentCapacity
           ticksPerLiter
@@ -274,6 +279,7 @@ export const deleteBeerNode = /* GraphQL */ `
           id
           beerNodeID
           name
+          tapIndex
           maxCapacity
           currentCapacity
           ticksPerLiter

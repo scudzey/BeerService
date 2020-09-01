@@ -61,6 +61,7 @@ const updateBeerTap = /* GraphQL */ `
       id
       beerNodeID
       name
+      tapIndex
       maxCapacity
       currentCapacity
       ticksPerLiter

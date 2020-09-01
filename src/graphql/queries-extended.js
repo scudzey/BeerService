@@ -11,6 +11,7 @@ export const getBeerNodeWithBeers = /* GraphQL */ `
           id
           beerNodeID
           name
+          tapIndex
           maxCapacity
           currentCapacity
           ticksPerLiter

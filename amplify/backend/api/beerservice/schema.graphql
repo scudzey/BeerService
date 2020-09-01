@@ -6,10 +6,12 @@ type beerTap
     { allow: private, operations: [read]}
   ])
   @key(name: "byTapID", fields:["beerNodeID", "name"])
+  @key(name: "byTapIdByIndex", fields:["beerNodeID", "tapIndex"])
 {
   id: ID!
   beerNodeID: ID!
   name: String!
+  tapIndex: Int!
   maxCapacity: Int
   currentCapacity: Int
   ticksPerLiter: Int
@@ -29,7 +31,7 @@ type beerNode
   @key(name: "byDeviceId", fields:["deviceId"], queryField: "NodesByDeviceId")
 {
   id: ID!
-  taps: [beerTap] @connection(keyName:"byTapID", fields:["id"])
+  taps: [beerTap] @connection(keyName:"byTapIdByIndex", fields:["id"])
   deviceId: String!
   deviceCommonName: String!
 }
