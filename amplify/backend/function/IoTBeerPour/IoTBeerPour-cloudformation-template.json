@@ -83,7 +83,7 @@
 				"Timeout": "25",
 				"Code": {
 					"S3Bucket": "amplify-beerservice-dev-201355-deployment",
-					"S3Key": "amplify-builds/IoTBeerPour-6e59684c4f3759623830-build.zip"
+					"S3Key": "amplify-builds/IoTBeerPour-30357176456272375743-build.zip"
 				}
 			}
 		},

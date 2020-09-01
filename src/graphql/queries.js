@@ -64,6 +64,7 @@ export const getBeerTap = /* GraphQL */ `
       maxCapacity
       currentCapacity
       ticksPerLiter
+      currentBeerID
       createdAt
       updatedAt
       node {
@@ -75,6 +76,19 @@ export const getBeerTap = /* GraphQL */ `
         taps {
           nextToken
         }
+      }
+      currentBeer {
+        id
+        title
+        description
+        imageURL
+        style
+        brewer
+        website
+        abv
+        ibu
+        createdAt
+        updatedAt
       }
     }
   }
@@ -93,12 +107,26 @@ export const listBeerTaps = /* GraphQL */ `
         maxCapacity
         currentCapacity
         ticksPerLiter
+        currentBeerID
         createdAt
         updatedAt
         node {
           id
           deviceId
           deviceCommonName
+          createdAt
+          updatedAt
+        }
+        currentBeer {
+          id
+          title
+          description
+          imageURL
+          style
+          brewer
+          website
+          abv
+          ibu
           createdAt
           updatedAt
         }
@@ -144,6 +172,7 @@ export const getBeerNode = /* GraphQL */ `
           maxCapacity
           currentCapacity
           ticksPerLiter
+          currentBeerID
           createdAt
           updatedAt
         }
@@ -181,23 +210,6 @@ export const nodesByDeviceId = /* GraphQL */ `
     }
   }
 `;
-export const getBeerDefinition = /* GraphQL */ `
-  query GetBeerDefinition($id: ID!) {
-    getBeerDefinition(id: $id) {
-      id
-      title
-      description
-      imageURL
-      style
-      brewer
-      website
-      abv
-      ibu
-      createdAt
-      updatedAt
-    }
-  }
-`;
 export const listBeerDefinitions = /* GraphQL */ `
   query ListBeerDefinitions(
     $filter: ModelbeerDefinitionFilterInput
@@ -219,6 +231,23 @@ export const listBeerDefinitions = /* GraphQL */ `
         updatedAt
       }
       nextToken
+    }
+  }
+`;
+export const getBeerDefinition = /* GraphQL */ `
+  query GetBeerDefinition($id: ID!) {
+    getBeerDefinition(id: $id) {
+      id
+      title
+      description
+      imageURL
+      style
+      brewer
+      website
+      abv
+      ibu
+      createdAt
+      updatedAt
     }
   }
 `;

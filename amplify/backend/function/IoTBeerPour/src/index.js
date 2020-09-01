@@ -64,6 +64,7 @@ const updateBeerTap = /* GraphQL */ `
       maxCapacity
       currentCapacity
       ticksPerLiter
+      currentBeerID
       createdAt
       updatedAt
       node {
@@ -75,6 +76,19 @@ const updateBeerTap = /* GraphQL */ `
         taps {
           nextToken
         }
+      }
+      currentBeer {
+        id
+        title
+        description
+        imageURL
+        style
+        brewer
+        website
+        abv
+        ibu
+        createdAt
+        updatedAt
       }
     }
   }

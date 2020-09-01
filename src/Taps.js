@@ -2,6 +2,8 @@ import React, {Fragment} from 'react';
 import { API, graphqlOperation } from 'aws-amplify';
 import {getBeerNode} from './graphql/queries.js'
 import * as subscriptions from './graphql/subscriptions'
+import TapElement from './TapElement.js';
+import { getBeerNodeWithBeers } from './graphql/queries-extended.js';
 
 class Taps extends React.Component {
     
@@ -10,12 +12,16 @@ class Taps extends React.Component {
         this.state = { loading: true, title: null, beerNodeID:props.beerNodeID, NodeName:props.NodeName, taps:[]}     
     }
 
+    
+
     componentDidMount() {
         this.getTaps()
         this.subscribeTaps()
     }
 
     tapUpdate(tapData) {
+        console.log(this.state.taps)
+        console.log(tapData.id)
         const tapIndex = this.state.taps.findIndex(element => element.id === tapData.id);
         let newTapArray = [...this.state.taps]
         newTapArray[tapIndex] = {...newTapArray[tapIndex], currentCapacity: tapData.currentCapacity}
@@ -23,7 +29,7 @@ class Taps extends React.Component {
     }
 
     getTaps = () => {
-        API.graphql(graphqlOperation(getBeerNode, {id: this.state.beerNodeID})).then(response => this.setState({ loading: false, taps: response.data.getBeerNode.taps.items}) )
+        API.graphql(graphqlOperation(getBeerNodeWithBeers, {id: this.state.beerNodeID})).then(response => this.setState({ loading: false, taps: response.data.getBeerNode.taps.items}) )
     }
 
     getPints = item => {
@@ -36,17 +42,25 @@ class Taps extends React.Component {
         return percentage
     }
 
-    renderList = taps => {
+    renderSubHeader = tap => {
+        return `ABV: ${tap.currentBeer.avb}% -- IBU:${tap.currentBeer.ibu}`
+    }
+    
+    renderPints = tap => {
+        return `Pints Remaining: ${this.getPints(tap)}`
+    }
+
+    renderPercentage = tap => {
+        return `${this.getPercentage(tap)}%`
+    }
+    
+    
+    renderList = taps => { 
         return (
-            <ul>
-                { taps.map(tap => (
-                    <li style={{ listStyle: "none" }} key={tap.name}>
-                        {`${tap.name} - Pints: ${this.getPints(tap)}  - (${this.getPercentage(tap)}%)`}
-                    </li>
-                        
-                    ))
-                }
-            </ul>
+                <TapElement taps={taps} />
+                /*<li style={{ listStyle: "none" }} key={tap.name}>
+                    {`${tap.name} - Pints: ${this.getPints(tap)}  - (${this.getPercentage(tap)}%)`}
+                </li>            */
         );
     };
 

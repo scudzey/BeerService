@@ -91,6 +91,7 @@ export const createBeerTap = /* GraphQL */ `
       maxCapacity
       currentCapacity
       ticksPerLiter
+      currentBeerID
       createdAt
       updatedAt
       node {
@@ -102,6 +103,19 @@ export const createBeerTap = /* GraphQL */ `
         taps {
           nextToken
         }
+      }
+      currentBeer {
+        id
+        title
+        description
+        imageURL
+        style
+        brewer
+        website
+        abv
+        ibu
+        createdAt
+        updatedAt
       }
     }
   }
@@ -118,6 +132,7 @@ export const updateBeerTap = /* GraphQL */ `
       maxCapacity
       currentCapacity
       ticksPerLiter
+      currentBeerID
       createdAt
       updatedAt
       node {
@@ -129,6 +144,19 @@ export const updateBeerTap = /* GraphQL */ `
         taps {
           nextToken
         }
+      }
+      currentBeer {
+        id
+        title
+        description
+        imageURL
+        style
+        brewer
+        website
+        abv
+        ibu
+        createdAt
+        updatedAt
       }
     }
   }
@@ -145,6 +173,7 @@ export const deleteBeerTap = /* GraphQL */ `
       maxCapacity
       currentCapacity
       ticksPerLiter
+      currentBeerID
       createdAt
       updatedAt
       node {
@@ -156,6 +185,19 @@ export const deleteBeerTap = /* GraphQL */ `
         taps {
           nextToken
         }
+      }
+      currentBeer {
+        id
+        title
+        description
+        imageURL
+        style
+        brewer
+        website
+        abv
+        ibu
+        createdAt
+        updatedAt
       }
     }
   }
@@ -179,6 +221,7 @@ export const createBeerNode = /* GraphQL */ `
           maxCapacity
           currentCapacity
           ticksPerLiter
+          currentBeerID
           createdAt
           updatedAt
         }
@@ -206,6 +249,7 @@ export const updateBeerNode = /* GraphQL */ `
           maxCapacity
           currentCapacity
           ticksPerLiter
+          currentBeerID
           createdAt
           updatedAt
         }
@@ -233,6 +277,7 @@ export const deleteBeerNode = /* GraphQL */ `
           maxCapacity
           currentCapacity
           ticksPerLiter
+          currentBeerID
           createdAt
           updatedAt
         }
