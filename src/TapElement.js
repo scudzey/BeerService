@@ -26,9 +26,9 @@ const useStyles = makeStyles((theme) => ({
         backgroundColor: "#f1f2f4"
     },
     cardMedia: {
-        width: 256,
         height: 0, 
-        paddingTop: '56.25%'
+        paddingTop: '56.25%',
+        justifyContent: 'center'
     },
     cardBeerDescription: {
       display: 'flex',
@@ -79,9 +79,9 @@ export default function TapElement({taps}) {
                     >
                     </CardHeader>
                     <CardContent className={classes.cardContent}>
-                      <Hidden xsDown>
-                        <CardMedia className={classes.cardMedia} image={tap.currentBeer.imageURL} />
-                      </Hidden>
+                     
+                      <CardMedia className={classes.cardMedia} image={tap.currentBeer.imageURL} />
+                      
                       <div className={classes.cardBeerDescription}>
                           
                           <ul>
