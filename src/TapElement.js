@@ -63,7 +63,7 @@ const renderTitle = tap => {
 }
 
 const renderSubHeader = tap => {
-    return `ABV: ${tap.currentBeer.abv}% -- IBU:${tap.currentBeer.ibu}`
+    return `ABV: ${tap.currentBeer.abv}% | IBU:${tap.currentBeer.ibu}`
 }
 
 const renderPints = tap => {
