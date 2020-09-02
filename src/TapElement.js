@@ -138,9 +138,6 @@ export default function TapElement({taps}) {
                     <CardContent width="100%" className={classes.cardContent}>
                         <div  className={classes.cardBeerDescription}>                          
                             <ul style={{display: 'inline-block'}}>
-                                <Typography width="100%" component="li" variant="h4" color="textPrimary" align="left">
-                                    {renderPints(tap)}
-                                </Typography >
                                 <Typography width="100%" component="li" variant="h6" color="textSecondary" align="left">
                                     {tap.currentBeer.description}
                                 </Typography >
