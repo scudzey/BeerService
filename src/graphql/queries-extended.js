@@ -2,6 +2,7 @@ export const getBeerNodeWithBeers = /* GraphQL */ `
   query GetBeerNode($id: ID!) {
     getBeerNode(id: $id) {
       id
+      ownerUsername
       deviceId
       deviceCommonName
       createdAt

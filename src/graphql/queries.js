@@ -70,11 +70,24 @@ export const getBeerTap = /* GraphQL */ `
       updatedAt
       node {
         id
+        ownerUsername
         deviceId
         deviceCommonName
         createdAt
         updatedAt
         taps {
+          items {
+            id
+            beerNodeID
+            name
+            tapIndex
+            maxCapacity
+            currentCapacity
+            ticksPerLiter
+            currentBeerID
+            createdAt
+            updatedAt
+          }
           nextToken
         }
       }
@@ -114,10 +127,14 @@ export const listBeerTaps = /* GraphQL */ `
         updatedAt
         node {
           id
+          ownerUsername
           deviceId
           deviceCommonName
           createdAt
           updatedAt
+          taps {
+            nextToken
+          }
         }
         currentBeer {
           id
@@ -146,11 +163,24 @@ export const listBeerNodes = /* GraphQL */ `
     listBeerNodes(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
+        ownerUsername
         deviceId
         deviceCommonName
         createdAt
         updatedAt
         taps {
+          items {
+            id
+            beerNodeID
+            name
+            tapIndex
+            maxCapacity
+            currentCapacity
+            ticksPerLiter
+            currentBeerID
+            createdAt
+            updatedAt
+          }
           nextToken
         }
       }
@@ -162,6 +192,7 @@ export const getBeerNode = /* GraphQL */ `
   query GetBeerNode($id: ID!) {
     getBeerNode(id: $id) {
       id
+      ownerUsername
       deviceId
       deviceCommonName
       createdAt
@@ -178,6 +209,27 @@ export const getBeerNode = /* GraphQL */ `
           currentBeerID
           createdAt
           updatedAt
+          node {
+            id
+            ownerUsername
+            deviceId
+            deviceCommonName
+            createdAt
+            updatedAt
+          }
+          currentBeer {
+            id
+            title
+            description
+            imageURL
+            style
+            brewer
+            website
+            abv
+            ibu
+            createdAt
+            updatedAt
+          }
         }
         nextToken
       }
@@ -201,11 +253,24 @@ export const nodesByDeviceId = /* GraphQL */ `
     ) {
       items {
         id
+        ownerUsername
         deviceId
         deviceCommonName
         createdAt
         updatedAt
         taps {
+          items {
+            id
+            beerNodeID
+            name
+            tapIndex
+            maxCapacity
+            currentCapacity
+            ticksPerLiter
+            currentBeerID
+            createdAt
+            updatedAt
+          }
           nextToken
         }
       }

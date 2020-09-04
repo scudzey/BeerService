@@ -1,14 +1,13 @@
-import React, {Fragment} from 'react';
-import { CssBaseline, LinearProgress, Box } from "@material-ui/core";
+import React from 'react';
+import { CssBaseline, LinearProgress, Box, Fab } from "@material-ui/core";
 import Card from '@material-ui/core/Card'
 import CardContent from '@material-ui/core/CardContent'
-import CardActions from '@material-ui/core/CardActions'
 import CardMedia from '@material-ui/core/CardMedia'
-import CardHeader from '@material-ui/core/CardHeader'
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid'
 import Typography from '@material-ui/core/Typography';
-import Hidden from '@material-ui/core/Hidden';
+
+import TapEdit from './TapEdit'
 
 const useStyles = makeStyles((theme) => ({
     '@global': {
@@ -45,33 +44,26 @@ const useStyles = makeStyles((theme) => ({
     
   }));
 
-const getPints = item => {
-    let pintsRemaining = ((item.currentCapacity/6) /473.176).toFixed(2)
-    return pintsRemaining
-}
-
 const getPercentage = item => {
     let percentage = ((item.currentCapacity / item.maxCapacity) * 100).toFixed(2)
     return percentage
-}
-
-const renderTitle = tap => {
-    return (
-        `Tap: ${tap.tapIndex + 1} \n
-        `
-    )
 }
 
 const renderSubHeader = tap => {
     return `ABV: ${tap.currentBeer.abv}% | IBU:${tap.currentBeer.ibu}`
 }
 
-const renderPints = tap => {
-    return `Pints: ${getPints(tap)}`
-}
-
 const renderPercentage = tap => {
     return `${getPercentage(tap)}%`
+}
+
+const renderEditMenu = (isOwner, tap, editCallback) => {
+    if (isOwner) {
+        return(
+            <TapEdit tap={tap} editCallback={editCallback}/>
+        )
+    }
+    return
 }
 
 const styles = {
@@ -91,9 +83,17 @@ const styles = {
         left: 0, 
         
      },
+     overlayRight: {
+        position: 'absolute',
+        justifyContent: 'justify-right',
+        color: 'white',
+        top: 8, 
+        right:4, 
+        
+     },
 }
 
-export default function TapElement({taps}) {
+export default function TapElement({taps, isOwner, editSubmitCallback}) {
     const classes = useStyles();
     return (
         <React.Fragment>
@@ -118,15 +118,16 @@ export default function TapElement({taps}) {
                                 </Typography>
                             </Box>
                             
-                        </Box>
-                        
-                            
+                        </Box>    
+                        </div>
+                        <div style={styles.overlayRight}>
+                        {renderEditMenu(isOwner, tap, editSubmitCallback) }
                         </div>
                     </CardContent>
                     <CardContent width="100%" className={classes.cardContent}>
                         <Box width="100%" display="flex" alignItems="center">
                             <Box width="100%" mr={1}>
-                            <LinearProgress variant="determinate" value={getPercentage(tap)} />
+                            <LinearProgress variant="determinate" value={Number(getPercentage(tap))} />
                             </Box>
                             <Box minWidth={35}>
                                 <Typography  variant="body2" color="textPrimary">

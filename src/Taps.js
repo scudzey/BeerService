@@ -1,6 +1,7 @@
 import React, {Fragment} from 'react';
-import { API, graphqlOperation } from 'aws-amplify';
+import { API, graphqlOperation, Auth } from 'aws-amplify';
 import {getBeerNode} from './graphql/queries.js'
+import {updateBeerTap} from './graphql/mutations'
 import * as subscriptions from './graphql/subscriptions'
 import TapElement from './TapElement.js';
 import { getBeerNodeWithBeers } from './graphql/queries-extended.js';
@@ -12,15 +13,12 @@ class Taps extends React.Component {
         this.state = { loading: true, title: null, beerNodeID:props.beerNodeID, NodeName:props.NodeName, taps:[]}     
     }
 
-    
-
     componentDidMount() {
         this.getTaps()
         this.subscribeTaps()
     }
 
     tapUpdate(tapData) {
-        console.log(tapData)
         if(!tapData || !tapData.id){
             return;
         }
@@ -31,7 +29,10 @@ class Taps extends React.Component {
     }
 
     getTaps = () => {
-        API.graphql(graphqlOperation(getBeerNodeWithBeers, {id: this.state.beerNodeID})).then(response => this.setState({ loading: false, taps: response.data.getBeerNode.taps.items}) )
+        API.graphql(graphqlOperation(getBeerNode, {id: this.state.beerNodeID})).then(response => {
+            this.setOwnerFlag(response.data.getBeerNode.ownerUsername)
+            this.setState({ loading: false, beerNode: response.data.getBeerNode, taps: response.data.getBeerNode.taps.items}) 
+        }).catch(err => console.log(err))
     }
 
     getPints = item => {
@@ -56,13 +57,20 @@ class Taps extends React.Component {
         return `${this.getPercentage(tap)}%`
     }
     
+    setOwnerFlag = ownerName => {
+        if (!ownerName){
+            return false;
+        }
+        Auth.currentAuthenticatedUser().then(
+            user => {
+                const currentUserString = user.getUsername()
+                this.setState({isOwner: (ownerName === currentUserString)})
+        }).catch(err => console.log(err))
+    }
     
     renderList = taps => { 
         return (
-                <TapElement taps={taps} />
-                /*<li style={{ listStyle: "none" }} key={tap.name}>
-                    {`${tap.name} - Pints: ${this.getPints(tap)}  - (${this.getPercentage(tap)}%)`}
-                </li>            */
+                <TapElement taps={taps} isOwner={this.state.isOwner} editSubmitCallback={this.handleEditSubmit.bind(this)}/>
         );
     };
 
@@ -70,13 +78,23 @@ class Taps extends React.Component {
         graphqlOperation(subscriptions.onUpdateBeerTap)
     ).subscribe({
         next: (tapData) => {
-            console.log("tapData")
-            console.log(tapData)
             this.tapUpdate(tapData.value.data.onUpdateBeerTap)
         }
     })
 
-
+    handleEditSubmit = (tap, beerId, size) =>
+    {
+        console.log("saving tap update")
+        console.log(tap)
+        console.log(beerId)
+        console.log(size)
+        API.graphql(graphqlOperation(updateBeerTap,{input:{
+            id:tap.id,
+            currentBeerID:beerId,
+            currentCapacity:size.currentCapacity,
+            maxCapacity:size.maxCapacity
+        }}))
+    }
 
     render() {
         const { loading, taps, NodeName} = this.state;

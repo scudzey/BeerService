@@ -76,11 +76,24 @@ export const onCreateBeerTap = /* GraphQL */ `
       updatedAt
       node {
         id
+        ownerUsername
         deviceId
         deviceCommonName
         createdAt
         updatedAt
         taps {
+          items {
+            id
+            beerNodeID
+            name
+            tapIndex
+            maxCapacity
+            currentCapacity
+            ticksPerLiter
+            currentBeerID
+            createdAt
+            updatedAt
+          }
           nextToken
         }
       }
@@ -115,11 +128,24 @@ export const onUpdateBeerTap = /* GraphQL */ `
       updatedAt
       node {
         id
+        ownerUsername
         deviceId
         deviceCommonName
         createdAt
         updatedAt
         taps {
+          items {
+            id
+            beerNodeID
+            name
+            tapIndex
+            maxCapacity
+            currentCapacity
+            ticksPerLiter
+            currentBeerID
+            createdAt
+            updatedAt
+          }
           nextToken
         }
       }
@@ -154,11 +180,24 @@ export const onDeleteBeerTap = /* GraphQL */ `
       updatedAt
       node {
         id
+        ownerUsername
         deviceId
         deviceCommonName
         createdAt
         updatedAt
         taps {
+          items {
+            id
+            beerNodeID
+            name
+            tapIndex
+            maxCapacity
+            currentCapacity
+            ticksPerLiter
+            currentBeerID
+            createdAt
+            updatedAt
+          }
           nextToken
         }
       }
@@ -182,6 +221,7 @@ export const onCreateBeerNode = /* GraphQL */ `
   subscription OnCreateBeerNode {
     onCreateBeerNode {
       id
+      ownerUsername
       deviceId
       deviceCommonName
       createdAt
@@ -198,6 +238,27 @@ export const onCreateBeerNode = /* GraphQL */ `
           currentBeerID
           createdAt
           updatedAt
+          node {
+            id
+            ownerUsername
+            deviceId
+            deviceCommonName
+            createdAt
+            updatedAt
+          }
+          currentBeer {
+            id
+            title
+            description
+            imageURL
+            style
+            brewer
+            website
+            abv
+            ibu
+            createdAt
+            updatedAt
+          }
         }
         nextToken
       }
@@ -208,6 +269,7 @@ export const onUpdateBeerNode = /* GraphQL */ `
   subscription OnUpdateBeerNode {
     onUpdateBeerNode {
       id
+      ownerUsername
       deviceId
       deviceCommonName
       createdAt
@@ -224,6 +286,27 @@ export const onUpdateBeerNode = /* GraphQL */ `
           currentBeerID
           createdAt
           updatedAt
+          node {
+            id
+            ownerUsername
+            deviceId
+            deviceCommonName
+            createdAt
+            updatedAt
+          }
+          currentBeer {
+            id
+            title
+            description
+            imageURL
+            style
+            brewer
+            website
+            abv
+            ibu
+            createdAt
+            updatedAt
+          }
         }
         nextToken
       }
@@ -234,6 +317,7 @@ export const onDeleteBeerNode = /* GraphQL */ `
   subscription OnDeleteBeerNode {
     onDeleteBeerNode {
       id
+      ownerUsername
       deviceId
       deviceCommonName
       createdAt
@@ -250,6 +334,27 @@ export const onDeleteBeerNode = /* GraphQL */ `
           currentBeerID
           createdAt
           updatedAt
+          node {
+            id
+            ownerUsername
+            deviceId
+            deviceCommonName
+            createdAt
+            updatedAt
+          }
+          currentBeer {
+            id
+            title
+            description
+            imageURL
+            style
+            brewer
+            website
+            abv
+            ibu
+            createdAt
+            updatedAt
+          }
         }
         nextToken
       }

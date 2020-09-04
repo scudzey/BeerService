@@ -7,6 +7,8 @@ class Nodes extends React.Component {
     
     constructor(props) {
         super(props)
+        console.log("props:")
+        console.log(props.toString())
         this.state = { loading: true, title: null}
     }
 
@@ -23,10 +25,8 @@ class Nodes extends React.Component {
             <Fragment>
                 {
                     items.map(nodeItem => (
-                        <Taps beerNodeID={nodeItem.id} NodeName={nodeItem.deviceCommonName} />
-                    )
-
-                    )
+                        <Taps key={nodeItem.id} beerNodeID={nodeItem.id} NodeName={nodeItem.deviceCommonName} />
+                    ))
                 }
             </Fragment>
         )

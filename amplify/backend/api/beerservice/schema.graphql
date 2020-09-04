@@ -23,7 +23,7 @@ type beerTap
 type beerNode
   @model
   @auth(rules: [
-    { allow: owner, operations: [create, delete, update] },
+    { allow: owner, operations: [create, delete, update], ownerField:"ownerUsername" },
     { allow: private, provider: iam, operations: [create, delete, read, update] },
     { allow: private, operations: [read]}
   ])
@@ -31,6 +31,7 @@ type beerNode
   @key(name: "byDeviceId", fields:["deviceId"], queryField: "NodesByDeviceId")
 {
   id: ID!
+  ownerUsername: String
   taps: [beerTap] @connection(keyName:"byTapIdByIndex", fields:["id"])
   deviceId: String!
   deviceCommonName: String!
