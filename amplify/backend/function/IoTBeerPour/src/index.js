@@ -131,7 +131,7 @@ exports.handler = async (event, context, callback) => {
     console.log(deviceId);
 
     try {
-        const result = await client.query({query:gql(nodesByDeviceId), variables: {deviceId:deviceId}});
+        const result = await client.query({query:gql(nodesByDeviceId), fetchPolicy: 'network-only', variables: {deviceId:deviceId}});
         console.log(result.data);
         var findTapId = {};
         result.data.NodesByDeviceId.items[0].taps.items.map(async item => {
